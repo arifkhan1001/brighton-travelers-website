@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta -->
+  <title>Brighton Travelers — Explore Brighton Like Never Before</title>
+  <meta name="description" content="Discover Brighton's best destinations, food spots, events and hidden gems with Brighton Travelers. Plan your perfect seaside getaway today." />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ==================== LOADING SCREEN ==================== -->
+  <div id="loader">
+    <div class="loader-spinner"></div>
+    <span class="loader-text">Brighton Travelers</span>
+  </div>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="nav-logo">✈ Brighton Travelers</a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#places">Places</a></li>
+        <li><a href="#food">Food</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#nearby">Nearby</a></li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <!-- Dark mode toggle inside nav -->
+        <li>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        </li>
+      </ul>
+
+      <!-- Hamburger for mobile -->
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==================== 1. HERO SECTION ==================== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Brighton Travelers</h1>
+      <p>Explore Brighton like never before — sun, sea, culture and unforgettable moments await you.</p>
+      <a href="#about" class="btn-hero">Discover More</a>
+    </div>
+    <div class="scroll-indicator"><span></span></div>
+  </section>
+
+  <!-- ==================== 2. ABOUT BRIGHTON ==================== -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title reveal">About Brighton</h2>
+      <p class="section-subtitle reveal">A vibrant seaside city where history meets bohemian spirit</p>
+
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <img src="images/brighton-beach.png" alt="Brighton Beach with colourful beach huts" />
+        </div>
+        <div class="about-text reveal">
+          <h3>The Jewel of the South Coast</h3>
+          <p>
+            Nestled on the sparkling south coast of England, Brighton has been enchanting visitors since the 18th century when the Prince Regent first made it his royal playground. Today it's one of the UK's most vibrant and inclusive cities.
+          </p>
+          <p>
+            From the iconic pebble beach and stunning Regency architecture to its thriving arts scene, quirky independent shops and legendary nightlife, Brighton blends seaside charm with cosmopolitan flair like nowhere else.
+          </p>
+          <p>
+            Often called <strong>"London-by-the-Sea"</strong>, this buzzing city is home to colourful street art, world-class festivals, a famous foodie culture, and a spirit of creativity that's hard to resist.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 3. MUST VISIT PLACES ==================== -->
+  <section class="section" id="places" style="background: var(--clr-bg-alt);">
+    <div class="container">
+      <h2 class="section-title reveal">Must-Visit Places</h2>
+      <p class="section-subtitle reveal">Brighton's iconic landmarks you simply can't miss</p>
+
+      <div class="card-grid">
+        <!-- Brighton Palace Pier -->
+        <div class="card reveal">
+          <div class="card-img">
+            <img src="images/palace-pier.png" alt="Brighton Palace Pier" />
+            <span class="card-badge">Iconic</span>
+          </div>
+          <div class="card-body">
+            <h3>Brighton Palace Pier</h3>
+            <p>The city's most famous landmark — a Victorian pleasure pier with fairground rides, arcades, and stunning sea views stretching to the horizon.</p>
+          </div>
+        </div>
+
+        <!-- Royal Pavilion -->
+        <div class="card reveal">
+          <div class="card-img">
+            <img src="images/royal-pavilion.png" alt="Royal Pavilion" />
+            <span class="card-badge">Heritage</span>
+          </div>
+          <div class="card-body">
+            <h3>Royal Pavilion</h3>
+            <p>An extraordinary Indo-Saracenic palace built for King George IV. Its opulent interior and exotic gardens make it a true architectural wonder.</p>
+          </div>
+        </div>
+
+        <!-- Brighton Beach -->
+        <div class="card reveal">
+          <div class="card-img">
+            <img src="images/brighton-beach.png" alt="Brighton Beach" />
+            <span class="card-badge">Classic</span>
+          </div>
+          <div class="card-body">
+            <h3>Brighton Beach</h3>
+            <p>Famous pebble beaches with colourful beach huts, lively promenade, and spectacular sunsets that paint the sky in shades of orange and pink.</p>
+          </div>
+        </div>
+
+        <!-- The Lanes -->
+        <div class="card reveal">
+          <div class="card-img">
+            <img src="images/the-lanes.png" alt="The Lanes Brighton" />
+            <span class="card-badge">Shopping</span>
+          </div>
+          <div class="card-body">
+            <h3>The Lanes</h3>
+            <p>A maze of narrow, winding streets filled with antique shops, boutiques, jewellers, and cosy cafés — a treasure hunter's paradise.</p>
+          </div>
+        </div>
+
+        <!-- British Airways i360 -->
+        <div class="card reveal">
+          <div class="card-img">
+            <img src="images/i360.png" alt="British Airways i360" />
+            <span class="card-badge">Modern</span>
+          </div>
+          <div class="card-body">
+            <h3>British Airways i360</h3>
+            <p>The world's slimmest observation tower rises 162 metres, offering breathtaking 360-degree panoramic views of the coast and South Downs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. FOOD & DRINK SPOTS ==================== -->
+  <section class="section" id="food">
+    <div class="container">
+      <h2 class="section-title reveal">Food & Drink</h2>
+      <p class="section-subtitle reveal">Savour Brighton's legendary culinary scene</p>
+
+      <div class="card-grid">
+        <!-- Fish & Chips -->
+        <div class="card reveal">
+          <div class="card-img">
+            <img src="images/fish-and-chips.png" alt="Fish and Chips by the sea" />
+            <span class="card-badge">Must Try</span>
+          </div>
+          <div class="card-body">
+            <h3>Fish & Chips</h3>
+            <p>No visit to Brighton is complete without freshly battered fish and crispy chips enjoyed on the seafront. Try Bankers, The Regency, or Bardsley's for the best!</p>
+          </div>
+        </div>
+
+        <!-- Seafront Cafes -->
+        <div class="card reveal">
+          <div class="card-img">
+            <img src="images/seafront-cafe.png" alt="Seafront Cafe" />
+            <span class="card-badge">Chill Vibes</span>
+          </div>
+          <div class="card-body">
+            <h3>Seafront Cafés</h3>
+            <p>Sip artisan coffee while watching the waves. Brighton's beachfront is lined with charming cafés serving everything from pastries to brunch plates.</p>
+          </div>
+        </div>
+
+        <!-- Street Food -->
+        <div class="card reveal">
+          <div class="card-img">
+            <img src="images/street-food.png" alt="Brighton Street Food" />
+            <span class="card-badge">Foodie</span>
+          </div>
+          <div class="card-body">
+            <h3>Street Food Markets</h3>
+            <p>From the bustling Open Market to pop-up stalls, Brighton's street food scene offers flavours from around the world — tacos, bao buns, curries and more.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 5. GALLERY ==================== -->
+  <section class="section" id="gallery" style="background: var(--clr-bg-alt);">
+    <div class="container">
+      <h2 class="section-title reveal">Gallery</h2>
+      <p class="section-subtitle reveal">Stunning snapshots of Brighton life</p>
+
+      <div class="gallery-grid reveal">
+        <div class="gallery-item" data-full="images/hero.png">
+          <img src="images/hero.png" alt="Brighton sunset" />
+        </div>
+        <div class="gallery-item" data-full="images/palace-pier.png">
+          <img src="images/palace-pier.png" alt="Palace Pier" />
+        </div>
+        <div class="gallery-item" data-full="images/royal-pavilion.png">
+          <img src="images/royal-pavilion.png" alt="Royal Pavilion" />
+        </div>
+        <div class="gallery-item" data-full="images/brighton-beach.png">
+          <img src="images/brighton-beach.png" alt="Brighton Beach" />
+        </div>
+        <div class="gallery-item" data-full="images/the-lanes.png">
+          <img src="images/the-lanes.png" alt="The Lanes" />
+        </div>
+        <div class="gallery-item" data-full="images/i360.png">
+          <img src="images/i360.png" alt="i360 Tower" />
+        </div>
+        <div class="gallery-item" data-full="images/seafront-cafe.png">
+          <img src="images/seafront-cafe.png" alt="Seafront Café" />
+        </div>
+        <div class="gallery-item" data-full="images/seven-sisters.png">
+          <img src="images/seven-sisters.png" alt="Seven Sisters" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LIGHTBOX (hidden by default) ==================== -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <img src="" alt="Full-size preview" id="lightboxImg" />
+  </div>
+
+  <!-- ==================== 6. UPCOMING EVENTS ==================== -->
+  <section class="section" id="events">
+    <div class="container">
+      <h2 class="section-title reveal">Upcoming Events</h2>
+      <p class="section-subtitle reveal">Mark your calendar for Brighton's best experiences</p>
+
+      <div class="timeline reveal">
+        <div class="timeline-item">
+          <span class="timeline-date">May 2026</span>
+          <h3>Brighton Festival</h3>
+          <p>England's largest mixed-arts festival returns with theatre, music, dance, circus, art, film and literature events across the city.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date">June 2026</span>
+          <h3>Brighton Pride</h3>
+          <p>One of the UK's biggest and most colourful Pride celebrations — featuring a parade, live music, community events and a legendary party atmosphere.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date">July 2026</span>
+          <h3>Paddle Round the Pier</h3>
+          <p>Europe's biggest free beach and watersports festival with paddleboarding, kayaking, surfing, and beach volleyball right on Brighton seafront.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date">August 2026</span>
+          <h3>Brighton Food Festival</h3>
+          <p>A three-week celebration of Sussex food and drink featuring tastings, cookery demos, supper clubs, and pop-up dining experiences.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-date">November 2026</span>
+          <h3>Burning the Clocks</h3>
+          <p>Brighton's magical winter solstice lantern parade — handmade paper and willow lanterns light up the streets before a spectacular bonfire on the beach.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 7. NEARBY PLACES ==================== -->
+  <section class="section" id="nearby" style="background: var(--clr-bg-alt);">
+    <div class="container">
+      <h2 class="section-title reveal">Nearby Escapes</h2>
+      <p class="section-subtitle reveal">Beautiful day trips just minutes from Brighton</p>
+
+      <div class="card-grid">
+        <!-- Seven Sisters -->
+        <div class="card reveal">
+          <div class="card-img">
+            <img src="images/seven-sisters.png" alt="Seven Sisters Cliffs" />
+            <span class="card-badge">Nature</span>
+          </div>
+          <div class="card-body">
+            <h3>Seven Sisters Cliffs</h3>
+            <p>A series of dramatic chalk cliffs on the South Downs — one of the most photographed coastlines in the world. Perfect for coastal walks.</p>
+          </div>
+        </div>
+
+        <!-- Lewes -->
+        <div class="card reveal">
+          <div class="card-img">
+            <img src="images/lewes.png" alt="Lewes Town" />
+            <span class="card-badge">Historic</span>
+          </div>
+          <div class="card-body">
+            <h3>Lewes</h3>
+            <p>A charming medieval county town with a Norman castle, independent bookshops, the famous Guy Fawkes Night celebrations, and rolling South Downs views.</p>
+          </div>
+        </div>
+
+        <!-- Devil's Dyke -->
+        <div class="card reveal">
+          <div class="card-img">
+            <img src="images/devils-dyke.png" alt="Devil's Dyke" />
+            <span class="card-badge">Scenic</span>
+          </div>
+          <div class="card-body">
+            <h3>Devil's Dyke</h3>
+            <p>A spectacular V-shaped valley carved into the South Downs with panoramic views stretching across the Weald. A favourite for hikers and paragliders.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 8. FUN FACTS ==================== -->
+  <section class="section" id="facts">
+    <div class="container">
+      <h2 class="section-title reveal">Fun Facts</h2>
+      <p class="section-subtitle reveal">Surprising tidbits about our favourite seaside city</p>
+
+      <div class="facts-grid">
+        <div class="fact-card reveal">
+          <span class="fact-icon">🐠</span>
+          <h4>Oldest Aquarium</h4>
+          <p>Brighton is home to Sea Life Brighton, the world's oldest operating aquarium — open since 1872!</p>
+        </div>
+        <div class="fact-card reveal">
+          <span class="fact-icon">🏙️</span>
+          <h4>London-by-the-Sea</h4>
+          <p>Brighton is nicknamed "London-by-the-Sea" because it's just 60 minutes from the capital by train.</p>
+        </div>
+        <div class="fact-card reveal">
+          <span class="fact-icon">🌈</span>
+          <h4>UK's LGBTQ+ Capital</h4>
+          <p>Brighton is widely recognised as the LGBTQ+ capital of the UK, famous for its inclusive and welcoming spirit.</p>
+        </div>
+        <div class="fact-card reveal">
+          <span class="fact-icon">🎡</span>
+          <h4>Electric Railway First</h4>
+          <p>Volk's Electric Railway, built in 1883, is the oldest operating electric railway in the world — and it runs along Brighton seafront!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 9. COMMUNITY ==================== -->
+  <section class="section" id="community" style="background: var(--clr-bg-alt);">
+    <div class="container">
+      <h2 class="section-title reveal">Community Wall</h2>
+      <p class="section-subtitle reveal">Share your Brighton story with fellow travellers</p>
+
+      <div class="community-wrapper reveal">
+        <!-- Comment Form -->
+        <div class="comment-form">
+          <h3>Leave a Comment</h3>
+          <form id="commentForm">
+            <div class="form-group">
+              <label for="commentName">Your Name</label>
+              <input type="text" id="commentName" placeholder="e.g. Jane Doe" required />
+            </div>
+            <div class="form-group">
+              <label for="commentMessage">Your Message</label>
+              <textarea id="commentMessage" placeholder="Share your Brighton experience…" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Post Comment</button>
+          </form>
+        </div>
+
+        <!-- Comments List -->
+        <div class="comments-list" id="commentsList">
+          <h3>Recent Comments</h3>
+          <p class="no-comments" id="noComments">No comments yet — be the first! 💬</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 10. CONTACT ==================== -->
+  <section class="section" id="contact">
+    <div class="container">
+      <h2 class="section-title reveal">Get in Touch</h2>
+      <p class="section-subtitle reveal">Have a question or suggestion? We'd love to hear from you</p>
+
+      <div class="contact-wrapper reveal">
+        <form id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="contactName">Name</label>
+            <input type="text" id="contactName" placeholder="Your full name" />
+            <span class="error-msg" id="nameError">Please enter your name.</span>
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Email</label>
+            <input type="email" id="contactEmail" placeholder="you@example.com" />
+            <span class="error-msg" id="emailError">Please enter a valid email.</span>
+          </div>
+          <div class="form-group">
+            <label for="contactMsg">Message</label>
+            <textarea id="contactMsg" placeholder="Your message…"></textarea>
+            <span class="error-msg" id="msgError">Please enter a message.</span>
+          </div>
+          <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 11. INSTAGRAM ==================== -->
+  <section class="section" id="instagram" style="background: var(--clr-bg-alt);">
+    <div class="container">
+      <h2 class="section-title reveal">Follow Us on Instagram</h2>
+      <p class="section-subtitle reveal">@brighton.travelers — adventures through our lens</p>
+
+      <div class="insta-grid reveal">
+        <a class="insta-item" href="https://www.instagram.com/brighton.travelers/" target="_blank" rel="noopener">
+          <img src="images/hero.png" alt="Brighton sunset" />
+        </a>
+        <a class="insta-item" href="https://www.instagram.com/brighton.travelers/" target="_blank" rel="noopener">
+          <img src="images/palace-pier.png" alt="Palace Pier" />
+        </a>
+        <a class="insta-item" href="https://www.instagram.com/brighton.travelers/" target="_blank" rel="noopener">
+          <img src="images/royal-pavilion.png" alt="Royal Pavilion" />
+        </a>
+        <a class="insta-item" href="https://www.instagram.com/brighton.travelers/" target="_blank" rel="noopener">
+          <img src="images/the-lanes.png" alt="The Lanes" />
+        </a>
+        <a class="insta-item" href="https://www.instagram.com/brighton.travelers/" target="_blank" rel="noopener">
+          <img src="images/street-food.png" alt="Street food" />
+        </a>
+        <a class="insta-item" href="https://www.instagram.com/brighton.travelers/" target="_blank" rel="noopener">
+          <img src="images/devils-dyke.png" alt="Devil's Dyke" />
+        </a>
+      </div>
+
+      <div class="insta-follow reveal">
+        <a href="https://www.instagram.com/brighton.travelers/" target="_blank" rel="noopener" class="btn-insta">
+          📸 Follow @brighton.travelers
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 12. FOOTER ==================== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">✈ Brighton Travelers</a>
+          <p>Your ultimate guide to exploring Brighton and the stunning Sussex coast. Discover, experience, and share the magic.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#places">Places</a></li>
+            <li><a href="#food">Food & Drink</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="https://www.instagram.com/brighton.travelers/" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="YouTube">🎥</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Brighton Travelers. All rights reserved. Made with ❤️ for the love of travel.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== SCROLL-TO-TOP ==================== -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+  <!-- ==================== SUCCESS TOAST ==================== -->
+  <div class="success-toast" id="successToast">✅ Message sent successfully!</div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
