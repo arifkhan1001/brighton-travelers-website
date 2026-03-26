@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
      4. MOBILE HAMBURGER MENU
      ========================================================== */
   const hamburger = document.getElementById('hamburger');
-  const navLinks  = document.getElementById('navLinks');
+  const navLinks = document.getElementById('navLinks');
 
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('open');
@@ -89,10 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ==========================================================
      6. GALLERY LIGHTBOX
      ========================================================== */
-  const lightbox      = document.getElementById('lightbox');
-  const lightboxImg   = document.getElementById('lightboxImg');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
   const lightboxClose = document.getElementById('lightboxClose');
-  const galleryItems  = document.querySelectorAll('.gallery-item');
+  const galleryItems = document.querySelectorAll('.gallery-item');
 
   galleryItems.forEach(item => {
     item.addEventListener('click', () => {
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================== */
   const commentForm = document.getElementById('commentForm');
   const commentsList = document.getElementById('commentsList');
-  const noComments   = document.getElementById('noComments');
+  const noComments = document.getElementById('noComments');
 
   // Load saved comments on startup
   const loadComments = () => {
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   commentForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name    = document.getElementById('commentName').value.trim();
+    const name = document.getElementById('commentName').value.trim();
     const message = document.getElementById('commentMessage').value.trim();
     if (!name || !message) return;
 
@@ -169,10 +169,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================================
-     8. CONTACT FORM VALIDATION
+     8. CONTACT FORM — validate + open mailto
      ========================================================== */
   const contactForm = document.getElementById('contactForm');
-  const toast       = document.getElementById('successToast');
+  const toast = document.getElementById('successToast');
 
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -182,12 +182,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const name = document.getElementById('contactName');
     const nameErr = document.getElementById('nameError');
     if (!name.value.trim()) {
-      name.classList.add('error');
-      nameErr.classList.add('show');
-      valid = false;
+      name.classList.add('error'); nameErr.classList.add('show'); valid = false;
     } else {
-      name.classList.remove('error');
-      nameErr.classList.remove('show');
+      name.classList.remove('error'); nameErr.classList.remove('show');
     }
 
     // Email (basic regex)
@@ -195,35 +192,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailErr = document.getElementById('emailError');
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email.value.trim())) {
-      email.classList.add('error');
-      emailErr.classList.add('show');
-      valid = false;
+      email.classList.add('error'); emailErr.classList.add('show'); valid = false;
     } else {
-      email.classList.remove('error');
-      emailErr.classList.remove('show');
+      email.classList.remove('error'); emailErr.classList.remove('show');
     }
 
     // Message
     const msg = document.getElementById('contactMsg');
     const msgErr = document.getElementById('msgError');
     if (!msg.value.trim()) {
-      msg.classList.add('error');
-      msgErr.classList.add('show');
-      valid = false;
+      msg.classList.add('error'); msgErr.classList.add('show'); valid = false;
     } else {
-      msg.classList.remove('error');
-      msgErr.classList.remove('show');
+      msg.classList.remove('error'); msgErr.classList.remove('show');
     }
 
     if (valid) {
-      // Show success toast
+      // Build mailto and open the user's email client
+      const subject = encodeURIComponent(`Message from ${name.value.trim()} via Brighton Travelers`);
+      const body = encodeURIComponent(
+        `Name: ${name.value.trim()}\nEmail: ${email.value.trim()}\n\nMessage:\n${msg.value.trim()}`
+      );
+      window.location.href = `mailto:brighton.travelers@gmail.com?subject=${subject}&body=${body}`;
+
       toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 3000);
+      setTimeout(() => toast.classList.remove('show'), 3500);
       contactForm.reset();
     }
   });
 
-  // Remove error styling on input
+  // Remove error styling on input — contact form
   ['contactName', 'contactEmail', 'contactMsg'].forEach(id => {
     document.getElementById(id).addEventListener('input', function () {
       this.classList.remove('error');
@@ -233,7 +230,82 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================================
-     9. SCROLL-TO-TOP BUTTON
+     9. PROMOTION ENQUIRY FORM — validate + open mailto
+     ========================================================== */
+  const promoForm = document.getElementById('promoForm');
+
+  promoForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let valid = true;
+    const emailRegex2 = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const pName = document.getElementById('promoName');
+    const pEmail = document.getElementById('promoEmail');
+    const pMsg = document.getElementById('promoMsg');
+    const pWeb = document.getElementById('promoWebsite');
+
+    // Business name
+    if (!pName.value.trim()) {
+      pName.classList.add('error');
+      document.getElementById('promoNameError').classList.add('show');
+      valid = false;
+    } else {
+      pName.classList.remove('error');
+      document.getElementById('promoNameError').classList.remove('show');
+    }
+
+    // Email
+    if (!emailRegex2.test(pEmail.value.trim())) {
+      pEmail.classList.add('error');
+      document.getElementById('promoEmailError').classList.add('show');
+      valid = false;
+    } else {
+      pEmail.classList.remove('error');
+      document.getElementById('promoEmailError').classList.remove('show');
+    }
+
+    // Message
+    if (!pMsg.value.trim()) {
+      pMsg.classList.add('error');
+      document.getElementById('promoMsgError').classList.add('show');
+      valid = false;
+    } else {
+      pMsg.classList.remove('error');
+      document.getElementById('promoMsgError').classList.remove('show');
+    }
+
+    if (valid) {
+      const subject = encodeURIComponent(`Business Enquiry from ${pName.value.trim()} — Brighton Travelers`);
+      const body = encodeURIComponent(
+        `Business Name: ${pName.value.trim()}` +
+        `\nContact Email: ${pEmail.value.trim()}` +
+        `\nWebsite/Instagram: ${pWeb.value.trim() || 'N/A'}` +
+        `\n\nAbout the Business:\n${pMsg.value.trim()}`
+      );
+      window.location.href = `mailto:brighton.travelers@gmail.com?subject=${subject}&body=${body}`;
+
+      const promoToast = document.getElementById('successToast');
+      promoToast.textContent = '🚀 Enquiry sent! We\'ll be in touch soon.';
+      promoToast.classList.add('show');
+      setTimeout(() => {
+        promoToast.classList.remove('show');
+        promoToast.textContent = '✅ Message sent successfully!';
+      }, 3500);
+      promoForm.reset();
+    }
+  });
+
+  // Remove error styling on input — promo form
+  ['promoName', 'promoEmail', 'promoMsg'].forEach(id => {
+    document.getElementById(id).addEventListener('input', function () {
+      this.classList.remove('error');
+      const errEl = this.parentElement.querySelector('.error-msg');
+      if (errEl) errEl.classList.remove('show');
+    });
+  });
+
+  /* ==========================================================
+     10. SCROLL-TO-TOP BUTTON
      ========================================================== */
   const scrollTopBtn = document.getElementById('scrollTop');
 
