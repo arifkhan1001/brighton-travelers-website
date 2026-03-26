@@ -39,7 +39,10 @@
         <li><a href="#contact">Contact</a></li>
         <!-- Dark mode toggle inside nav -->
         <li>
-          <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+          <div class="theme-toggle-wrapper">
+            <span class="theme-label" id="themeLabel">Dark Mode</span>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+          </div>
         </li>
       </ul>
 
@@ -516,7 +519,7 @@
       <!-- Enquiry form -->
       <div class="promo-form-wrapper reveal">
         <h3>Send Us an Enquiry</h3>
-        <p>Fill in the form below and we'll get back to you within 48 hours. Clicking Send will open your email app.</p>
+        <p>Fill in the form below and we'll get back to you within 48 hours.</p>
         <form id="promoForm">
           <div class="form-group">
             <label for="promoName">Business Name</label>

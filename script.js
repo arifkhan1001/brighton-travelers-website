@@ -23,12 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
      Persists preference in localStorage
      ========================================================== */
   const themeToggle = document.getElementById('themeToggle');
+  const themeLabel = document.getElementById('themeLabel');
   const html = document.documentElement;
 
   // Restore saved theme
   const savedTheme = localStorage.getItem('bt-theme') || 'light';
   html.setAttribute('data-theme', savedTheme);
   themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  themeLabel.textContent = savedTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
 
   themeToggle.addEventListener('click', () => {
     const current = html.getAttribute('data-theme');
@@ -36,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     html.setAttribute('data-theme', next);
     localStorage.setItem('bt-theme', next);
     themeToggle.textContent = next === 'dark' ? '☀️' : '🌙';
+    themeLabel.textContent = next === 'dark' ? 'Light Mode' : 'Dark Mode';
   });
 
   /* ==========================================================
@@ -169,7 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================================
-     8. CONTACT FORM — validate + open mailto
+     8. CONTACT FORM — validate + send via Formsubmit.co
+     Sends email directly to brighton.travelers@gmail.com
      ========================================================== */
   const contactForm = document.getElementById('contactForm');
   const toast = document.getElementById('successToast');
@@ -207,16 +211,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (valid) {
-      // Build mailto and open the user's email client
-      const subject = encodeURIComponent(`Message from ${name.value.trim()} via Brighton Travelers`);
-      const body = encodeURIComponent(
-        `Name: ${name.value.trim()}\nEmail: ${email.value.trim()}\n\nMessage:\n${msg.value.trim()}`
-      );
-      window.location.href = `mailto:brighton.travelers@gmail.com?subject=${subject}&body=${body}`;
+      // Send via Formsubmit.co (free, no signup)
+      const formData = new FormData();
+      formData.append('name', name.value.trim());
+      formData.append('email', email.value.trim());
+      formData.append('message', msg.value.trim());
+      formData.append('_subject', `Message from ${name.value.trim()} via Brighton Travelers`);
+      formData.append('_captcha', 'false');
+      formData.append('_template', 'table');
 
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 3500);
-      contactForm.reset();
+      fetch('https://formsubmit.co/ajax/brighton.travelers@gmail.com', {
+        method: 'POST',
+        body: formData
+      })
+        .then(res => res.json())
+        .then(() => {
+          toast.textContent = '✅ Message sent successfully!';
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 3500);
+          contactForm.reset();
+        })
+        .catch(() => {
+          toast.textContent = '❌ Something went wrong. Please try again.';
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 3500);
+        });
     }
   });
 
@@ -230,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================================
-     9. PROMOTION ENQUIRY FORM — validate + open mailto
+     9. PROMOTION ENQUIRY FORM — validate + send via Formsubmit.co
      ========================================================== */
   const promoForm = document.getElementById('promoForm');
 
@@ -275,23 +294,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (valid) {
-      const subject = encodeURIComponent(`Business Enquiry from ${pName.value.trim()} — Brighton Travelers`);
-      const body = encodeURIComponent(
-        `Business Name: ${pName.value.trim()}` +
-        `\nContact Email: ${pEmail.value.trim()}` +
-        `\nWebsite/Instagram: ${pWeb.value.trim() || 'N/A'}` +
-        `\n\nAbout the Business:\n${pMsg.value.trim()}`
-      );
-      window.location.href = `mailto:brighton.travelers@gmail.com?subject=${subject}&body=${body}`;
+      // Send via Formsubmit.co
+      const formData = new FormData();
+      formData.append('Business Name', pName.value.trim());
+      formData.append('Contact Email', pEmail.value.trim());
+      formData.append('Website / Instagram', pWeb.value.trim() || 'N/A');
+      formData.append('message', pMsg.value.trim());
+      formData.append('_subject', `Business Enquiry from ${pName.value.trim()} — Brighton Travelers`);
+      formData.append('_captcha', 'false');
+      formData.append('_template', 'table');
 
-      const promoToast = document.getElementById('successToast');
-      promoToast.textContent = '🚀 Enquiry sent! We\'ll be in touch soon.';
-      promoToast.classList.add('show');
-      setTimeout(() => {
-        promoToast.classList.remove('show');
-        promoToast.textContent = '✅ Message sent successfully!';
-      }, 3500);
-      promoForm.reset();
+      fetch('https://formsubmit.co/ajax/brighton.travelers@gmail.com', {
+        method: 'POST',
+        body: formData
+      })
+        .then(res => res.json())
+        .then(() => {
+          const promoToast = document.getElementById('successToast');
+          promoToast.textContent = '🚀 Enquiry sent! We\'ll be in touch soon.';
+          promoToast.classList.add('show');
+          setTimeout(() => {
+            promoToast.classList.remove('show');
+            promoToast.textContent = '✅ Message sent successfully!';
+          }, 3500);
+          promoForm.reset();
+        })
+        .catch(() => {
+          const promoToast = document.getElementById('successToast');
+          promoToast.textContent = '❌ Something went wrong. Please try again.';
+          promoToast.classList.add('show');
+          setTimeout(() => promoToast.classList.remove('show'), 3500);
+        });
     }
   });
 
