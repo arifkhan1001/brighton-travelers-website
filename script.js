@@ -121,54 +121,123 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================================
-     7. COMMUNITY COMMENTS (localStorage)
+     7. COMMUNITY COMMENTS (localStorage + placeholder posts)
      ========================================================== */
   const commentForm = document.getElementById('commentForm');
   const commentsList = document.getElementById('commentsList');
   const noComments = document.getElementById('noComments');
 
-  // Load saved comments on startup
-  const loadComments = () => {
-    const comments = JSON.parse(localStorage.getItem('bt-comments') || '[]');
-    // Remove all existing comment bubbles
-    commentsList.querySelectorAll('.comment-bubble').forEach(el => el.remove());
+  // Placeholder community posts
+  const placeholderPosts = [
+    { name: 'Sarah M', rating: 5, message: 'The Lanes are absolutely magical — lost 3 hours in there! So many hidden gems and independent shops.', time: '15 Mar 2026' },
+    { name: 'James R', rating: 4, message: 'Brighton Pride was the best weekend of my life. The energy and love in this city is incredible.', time: '12 Mar 2026' },
+    { name: 'Emily T', rating: 5, message: 'The Royal Pavilion blew my mind. The interior is even more stunning than the outside!', time: '8 Mar 2026' },
+    { name: 'David K', rating: 4, message: 'Fish and chips on the seafront at sunset — does it get better than that? Brighton is the perfect day trip from London.', time: '3 Mar 2026' },
+    { name: 'Priya S', rating: 5, message: 'Terre à Terre is hands down the best vegetarian restaurant I\'ve ever been to. Brighton\'s food scene is world class.', time: '28 Feb 2026' }
+  ];
 
-    if (comments.length === 0) {
+  const getInitials = (name) => name.split(' ').map(n => n[0]).join('').toUpperCase();
+  const renderStars = (rating) => '★'.repeat(rating) + '☆'.repeat(5 - rating);
+
+  const renderComment = (c) => {
+    const card = document.createElement('div');
+    card.className = 'comment-card';
+    card.innerHTML = `
+      <div class="comment-header">
+        <div class="comment-avatar">${getInitials(c.name)}</div>
+        <div class="comment-meta">
+          <strong>${escapeHtml(c.name)}</strong>
+          <small>${c.time}</small>
+        </div>
+      </div>
+      <div class="comment-stars">${renderStars(c.rating || 0)}</div>
+      <p>${escapeHtml(c.message)}</p>
+    `;
+    return card;
+  };
+
+  // Load saved + placeholder comments on startup
+  const loadComments = () => {
+    const saved = JSON.parse(localStorage.getItem('bt-comments') || '[]');
+    const allComments = [...saved, ...placeholderPosts];
+    // Remove all existing comment cards
+    commentsList.querySelectorAll('.comment-card').forEach(el => el.remove());
+
+    if (allComments.length === 0) {
       noComments.style.display = 'block';
       return;
     }
     noComments.style.display = 'none';
 
-    comments.forEach(c => {
-      const bubble = document.createElement('div');
-      bubble.className = 'comment-bubble';
-      bubble.innerHTML = `
-        <div class="comment-name">${escapeHtml(c.name)}</div>
-        <div class="comment-text">${escapeHtml(c.message)}</div>
-        <div class="comment-time">${c.time}</div>
-      `;
-      commentsList.appendChild(bubble);
-    });
+    allComments.forEach(c => commentsList.appendChild(renderComment(c)));
   };
 
   loadComments();
+
+  // Star rating interaction
+  const starRating = document.getElementById('starRating');
+  const ratingInput = document.getElementById('commentRating');
+  if (starRating) {
+    starRating.querySelectorAll('.star').forEach(star => {
+      star.addEventListener('click', () => {
+        const val = parseInt(star.getAttribute('data-value'));
+        ratingInput.value = val;
+        starRating.querySelectorAll('.star').forEach((s, i) => {
+          s.textContent = i < val ? '★' : '☆';
+          s.classList.toggle('active', i < val);
+        });
+      });
+    });
+  }
 
   commentForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('commentName').value.trim();
     const message = document.getElementById('commentMessage').value.trim();
+    const rating = parseInt(ratingInput?.value || '0');
     if (!name || !message) return;
 
     const comments = JSON.parse(localStorage.getItem('bt-comments') || '[]');
     comments.unshift({
       name,
       message,
-      time: new Date().toLocaleString()
+      rating,
+      time: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
     });
     localStorage.setItem('bt-comments', JSON.stringify(comments));
 
     commentForm.reset();
+    if (ratingInput) ratingInput.value = '0';
+    if (starRating) starRating.querySelectorAll('.star').forEach(s => { s.textContent = '☆'; s.classList.remove('active'); });
     loadComments();
+
+    // Show thank you toast
+    const toast = document.getElementById('successToast');
+    toast.textContent = '🎉 Thanks for your review!';
+    toast.classList.add('show');
+    setTimeout(() => { toast.classList.remove('show'); toast.textContent = '✅ Message sent successfully!'; }, 3500);
+  });
+
+  /* ==========================================================
+     7b. EVENT CATEGORY FILTERS
+     ========================================================== */
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const eventItems = document.querySelectorAll('.timeline-item[data-category]');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+
+      eventItems.forEach(item => {
+        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
   });
 
 
