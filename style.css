@@ -1222,6 +1222,18 @@ button {
   font-size: .85rem;
 }
 
+/* Visitor counter badge */
+.visitor-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.visitor-counter img {
+  border-radius: 4px;
+}
+
 /* ==========================================================
    15. SCROLL-TO-TOP BUTTON
    ========================================================== */
