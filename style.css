@@ -376,18 +376,25 @@ button {
   text-align: center;
   color: #fff;
   overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    #1a1a4e 0%,
+    #2d1b69 30%,
+    #1e3a5f 60%,
+    #0d2137 100%
+  );
 }
 
-.hero-bg {
+#hero-video {
   position: absolute;
-  inset: 0;
-  background: url('images/hero.png') center/cover no-repeat;
-  transform: scale(1.05);
-  transition: transform 8s ease-out;
-}
-
-.hero.loaded .hero-bg {
-  transform: scale(1);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero-overlay {
@@ -1344,6 +1351,10 @@ button {
 
   .timeline {
     padding-left: 30px;
+  }
+
+  #hero-video {
+    object-position: 60% center;
   }
 }
 
