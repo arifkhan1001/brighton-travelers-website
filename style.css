@@ -560,6 +560,7 @@ button {
 }
 
 .card-img {
+  display: block;
   position: relative;
   height: 220px;
   overflow: hidden;
